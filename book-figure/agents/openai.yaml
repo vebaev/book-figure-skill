@@ -1,4 +1,4 @@
 interface:
   display_name: "Book Figure"
-  short_description: "Create minimalist scientific figures and ref redraws"
-  default_prompt: "Use $book-figure to create or redraw this scientific figure in the default minimalist genereg + detailed style. Use Inter for all ordinary text and Roboto Mono only for displayed nucleotide sequences. Render every visible text glyph in pure black #000000. Use ref mode when the supplied figure should provide scientific content only, not visual design."
+  short_description: "Create atlas-guided scientific figures and ref redraws"
+  default_prompt: "Use $book-figure with its visual biological-object atlas plus the default genereg + detailed modes. Select exact objects or complexes first, build an object-only atlas montage, and use category/contact fallbacks for missing objects. Use Inter for ordinary text, Roboto Mono only for displayed nucleotide sequences, and pure black #000000 for every visible text glyph. Use ref mode when the supplied source provides scientific facts only. Use atlas-debug to report reference selection without calling ImageGen."

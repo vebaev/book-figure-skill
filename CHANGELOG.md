@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.0 — 2026-07-28
+
+- Added a visual biological-object atlas with five immutable reference panels and 136 indexed biological forms, complexes, processes, compartments, and plant structures.
+- Added stable semantic IDs, curated aliases, scientific/reference statuses, normalized crop bounds, interaction tags, and duplicate printed-ID handling.
+- Added dependency-free PNG crop and montage generation plus exact, composite, alias, and missing-object fallback selection.
+- Added `atlas-debug` for selection reports and ImageGen reference montages without consuming a generation request.
+- Replaced the rejected canonical SVG pilot with atlas-first ImageGen guidance.
+- Updated the README with corrected miRNA-biogenesis and causal-SNP source-redraw examples.
+
 ## 1.2.1 — 2026-07-28
 
 - Required pure black `#000000` for every visible text glyph, including Inter labels and Roboto Mono nucleotide sequences.

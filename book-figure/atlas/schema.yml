@@ -1,0 +1,35 @@
+schema_version: 1
+atlas_version_pattern: '^\d+\.\d+\.\d+$'
+panel_id_pattern: '^atlas\.[a-z0-9]+(?:[.-][a-z0-9]+)*$'
+object_id_pattern: '^[a-z]+(?:[.-][a-z0-9]+)*$'
+reference_id_pattern: '^[a-z]+(?:[.-][a-z0-9]+)*(?:/[a-z0-9-]+)?$'
+panel_statuses:
+  - active
+  - deprecated
+reference_roles:
+  - primary-form
+  - secondary-form
+  - interaction
+  - style-only
+  - avoid
+scientific_statuses:
+  - unreviewed
+  - visual-only
+  - reviewed
+  - verified
+  - deprecated
+categories:
+  - nucleic-acid
+  - protein
+  - complex
+  - virus
+  - chromatin
+  - gene-regulation
+  - membrane
+  - compartment
+  - organelle
+  - plant-structure
+  - plant-symptom
+  - transport
+  - process
+  - symbol

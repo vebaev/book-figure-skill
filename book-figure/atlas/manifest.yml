@@ -1,0 +1,72 @@
+atlas_version: 1.0.0
+schema_version: 1
+panels:
+  - panel_id: atlas.mirna-silencing.001
+    version: 1.0.0
+    status: active
+    file: ../assets/object-atlas/panels/panel-001-mirna-silencing.png
+    index: panels/panel-001.yml
+    original_filename: Gemini_Generated_Image_pe1nexpe1nexpe1n.png
+    sha256: fe279902b7a66227cecec80d9e576f3ee87acb9427c7480e92b990247b9ea6a7
+    width: 1024
+    height: 1024
+    source_type: user-provided
+    creation_note: Gemini-generated image supplied by the user
+    authorization_note: User requested local storage inside book-figure
+    date_added: '2026-07-28'
+
+  - panel_id: atlas.plant-cell.001
+    version: 1.0.0
+    status: active
+    file: ../assets/object-atlas/panels/panel-002-plant-cell-structures.png
+    index: panels/panel-002.yml
+    original_filename: Gemini_Generated_Image_lc3nyjlc3nyjlc3n.png
+    sha256: 92b8aa6cf160a87d311a1add7ed2cc744161bfac5ee58797c7b670d01afa9d60
+    width: 1024
+    height: 1024
+    source_type: user-provided
+    creation_note: Gemini-generated image supplied by the user
+    authorization_note: User requested local storage inside book-figure
+    date_added: '2026-07-28'
+
+  - panel_id: atlas.gene-regulation.001
+    version: 1.0.0
+    status: active
+    file: ../assets/object-atlas/panels/panel-003-chromatin-gene-regulation.png
+    index: panels/panel-003.yml
+    original_filename: Gemini_Generated_Image_5xnl2m5xnl2m5xnl.png
+    sha256: 016802cdaf3f36e26e4dfdcbf1ce9ff7b76174d4f35c0293192f3760f1fd09e1
+    width: 1024
+    height: 1024
+    source_type: user-provided
+    creation_note: Gemini-generated image supplied by the user
+    authorization_note: User requested local storage inside book-figure
+    date_added: '2026-07-28'
+
+  - panel_id: atlas.virus-rnai.001
+    version: 1.0.0
+    status: active
+    file: ../assets/object-atlas/panels/panel-004-virus-rnai-core.png
+    index: panels/panel-004.yml
+    original_filename: Gemini_Generated_Image_dt8gfrdt8gfrdt8g.png
+    sha256: fb360f7ac2b3b6a7781ed5bfe3fcfd319a6ec2401927bcd1693f0b25ee8f1556
+    width: 1024
+    height: 1024
+    source_type: user-provided
+    creation_note: Gemini-generated image supplied by the user
+    authorization_note: User requested local storage inside book-figure
+    date_added: '2026-07-28'
+
+  - panel_id: atlas.viroid-biology.001
+    version: 1.0.0
+    status: active
+    file: ../assets/object-atlas/panels/panel-005-viroid-biology.png
+    index: panels/panel-005.yml
+    original_filename: Gemini_Generated_Image_aqfcz2aqfcz2aqfc.png
+    sha256: 8514a8e48bb7e3beb6ed0544328f3efe42529086944ac23f7e0e8e9bafc21295
+    width: 2048
+    height: 2048
+    source_type: user-provided
+    creation_note: Gemini-generated image supplied by the user
+    authorization_note: User requested local storage inside book-figure
+    date_added: '2026-07-28'

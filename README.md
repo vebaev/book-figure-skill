@@ -1,8 +1,8 @@
 # Book Figure
 
-`book-figure` is a reusable Codex skill for redrawing or creating biology, molecular-biology, genomics, plant, and regulatory schematics in one consistent minimalist editorial style.
+`book-figure` is a reusable Codex skill for redrawing or creating biology, molecular-biology, genomics, plant, viroid, RNA-silencing, chromatin, and regulatory schematics in one consistent editorial style.
 
-Current version: **1.2.1**
+Current version: **1.3.0**
 
 ## Install
 
@@ -19,10 +19,12 @@ Then invoke it in a request with `$book-figure`.
 ### Redraw a supplied figure
 
 ```text
-$book-figure redraw this figure
+$book-figure redraw this causal-SNP interpretation figure, preserving the Causal SNP, Target genes, Affected tissue, and Mechanisms rows, their uncertainty marks, and all directional relationships
 ```
 
-The source provides the panels, labels, entities, relationships, and reading order. By default, the result uses `genereg + detailed` rendering.
+![Book Figure example: causal SNP interpretation](docs/images/causal-snp-target-genes-mechanisms.png)
+
+The source provides the panels, labels, entities, relationships, and reading order. By default, the result uses the visual atlas plus `genereg + detailed` rendering.
 
 ### Create a new figure from text
 
@@ -38,9 +40,11 @@ Provide the intended entities, exact labels, relationships, and panel order. The
 
 | Mode | When to use it | Result |
 | --- | --- | --- |
-| `genereg` | Default | Uses the bundled reference image as the visual language: warm ivory background, flat pastel fills, fine slate-blue outlines, and airy editorial layout. |
+| visual atlas | Default | Selects exact biological forms and complexes from five indexed reference panels and supplies an object-only montage to ImageGen. |
+| `genereg` | Default | Uses the bundled global reference for warm ivory paper, editorial hierarchy, and layout language. |
 | `detailed` | Default | Adds scientifically precise 2D conventions for RNA/DNA, proteins, genes, motifs, modules, and compartments without 3D or cartoon rendering. |
-| `ref` | When the source must provide facts only | Inspects the supplied figure for scientific content and labels, but does not use its visual design. Only the bundled reference is passed to image generation. |
+| `ref` | When the source must provide facts only | Extracts scientific content without passing the source to ImageGen; only the atlas montage and global reference are used. |
+| `atlas-debug` | Before spending an ImageGen request | Reports exact/composite/fallback selection and builds the reference montage without generating a figure. |
 | `standard` | Only on explicit request | Generates without the bundled `genereg` reference. |
 | `simplified` | Only on explicit request | Uses a less structurally detailed schematic treatment. |
 
@@ -56,10 +60,25 @@ Modes can be requested in plain language, for example: `use ref mode` or `withou
 
 `book-figure/assets/genereg-reference.png` is the bundled style-only reference. Keep it with the skill when copying, packaging, or installing it.
 
+## Visual biological-object atlas
+
+Version 1.3.0 adds five immutable indexed panels with 136 biological-form references. Stable semantic IDs and aliases replace the duplicated printed `Bio-###` identifiers. ImageGen receives only a bounded montage of relevant object crops, never the original panel grid or captions.
+
+```bash
+ruby book-figure/scripts/atlas_debug.rb \
+  --root book-figure/atlas \
+  --entities "pri-miRNA,Dicer,AGO-containing RISC,target mRNA,DNA helicase" \
+  --output-dir /absolute/output/path
+```
+
+The diagnostic command writes `atlas-selection-report.yml` and `atlas-reference-montage.png` without calling ImageGen. Missing objects use same-category and molecular-contact exemplars.
+
 ## Design system and maintenance
 
 - `book-figure/references/design-tokens.md` defines the authoritative geometry and typography.
 - `book-figure/references/semantic-colors.md` defines stable biological-role color assignments.
+- `book-figure/references/object-atlas.md` defines reference selection, montage, fallback, and upgrades.
+- `book-figure/atlas/manifest.yml` registers the immutable panels and panel indexes.
 - `book-figure/tests/contract-cases.yml` contains representative consistency cases.
 - `book-figure/scripts/validate_skill.rb` checks package integrity without external dependencies.
 - `book-figure/VERSION` follows semantic versioning.

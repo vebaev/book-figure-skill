@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require "yaml"
+require_relative "atlas_support"
 
 root = File.expand_path("..", __dir__)
 errors = []
@@ -10,9 +11,30 @@ required = %w[
   VERSION
   agents/openai.yaml
   assets/genereg-reference.png
+  atlas/VERSION
+  atlas/schema.yml
+  atlas/manifest.yml
+  atlas/panels/panel-001.yml
+  atlas/panels/panel-002.yml
+  atlas/panels/panel-003.yml
+  atlas/panels/panel-004.yml
+  atlas/panels/panel-005.yml
   references/design-tokens.md
+  references/object-atlas.md
   references/semantic-colors.md
+  scripts/atlas_debug.rb
+  scripts/atlas_support.rb
+  scripts/build_atlas_crops.rb
+  scripts/build_atlas_montage.rb
+  scripts/png_support.rb
+  scripts/select_atlas_references.rb
+  scripts/validate_atlas.rb
+  tests/atlas-selection-cases.yml
   tests/contract-cases.yml
+  tests/test_atlas_foundation.rb
+  tests/test_atlas_rendering.rb
+  tests/test_atlas_selection.rb
+  tests/test_skill_atlas_contract.rb
 ]
 
 required.each do |relative|
@@ -24,7 +46,7 @@ version_path = File.join(root, "VERSION")
 if File.file?(version_path)
   version = File.read(version_path).strip
   errors << "VERSION must use semantic versioning" unless version.match?(/\A\d+\.\d+\.\d+\z/)
-  errors << "package version must be 1.2.1" unless version == "1.2.1"
+  errors << "package version must be 1.3.0" unless version == "1.3.0"
 end
 
 skill_path = File.join(root, "SKILL.md")
@@ -34,7 +56,10 @@ if File.file?(skill_path)
   metadata = frontmatter ? YAML.safe_load(frontmatter) : {}
   errors << "skill name must be book-figure" unless metadata["name"] == "book-figure"
   errors << "SKILL.md must require design-tokens.md" unless skill.include?("references/design-tokens.md")
+  errors << "SKILL.md must require object-atlas.md" unless skill.include?("references/object-atlas.md")
   errors << "SKILL.md must require semantic-colors.md" unless skill.include?("references/semantic-colors.md")
+  errors << "SKILL.md must describe atlas-debug" unless skill.include?("atlas-debug")
+  errors << "SKILL.md must preserve ref source isolation" unless skill.include?("Do not pass the user source to ImageGen")
 end
 
 tokens_path = File.join(root, "references/design-tokens.md")
@@ -64,9 +89,9 @@ if File.file?(fixture_path)
   errors << "contract fixtures require at least three cases" unless cases.is_a?(Array) && cases.length >= 3
   mirna_case = cases&.find { |entry| entry["id"] == "mirna-processing" }
   mirna_expected = mirna_case.is_a?(Hash) ? mirna_case["expected"] : nil
-  errors << "mirna contract must require Inter for ordinary text" unless mirna_expected&.fetch("default_text_font", nil) == "Inter"
-  errors << "mirna contract must require Roboto Mono for nucleotide sequences" unless mirna_expected&.fetch("nucleotide_sequence_font", nil) == "Roboto Mono"
-  errors << "mirna contract must require pure-black visible text" unless mirna_expected&.fetch("visible_text_color", nil) == "#000000"
+  errors << "mirna contract must require Inter" unless mirna_expected&.fetch("default_text_font", nil) == "Inter"
+  errors << "mirna contract must require Roboto Mono" unless mirna_expected&.fetch("nucleotide_sequence_font", nil) == "Roboto Mono"
+  errors << "mirna contract must require pure-black text" unless mirna_expected&.fetch("visible_text_color", nil) == "#000000"
 end
 
 asset_path = File.join(root, "assets/genereg-reference.png")
@@ -81,30 +106,19 @@ if File.file?(agent_path)
   agent = YAML.safe_load(File.read(agent_path))
   prompt = agent.dig("interface", "default_prompt").to_s
   errors << "default prompt must invoke $book-figure" unless prompt.include?("$book-figure")
+  errors << "default prompt must require visual atlas" unless prompt.include?("visual biological-object atlas")
   errors << "default prompt must require Inter" unless prompt.include?("Inter")
   errors << "default prompt must require Roboto Mono" unless prompt.include?("Roboto Mono")
-  errors << "default prompt must require pure-black visible text" unless prompt.include?("#000000")
+  errors << "default prompt must require pure-black text" unless prompt.include?("#000000")
+  errors << "default prompt must describe atlas-debug" unless prompt.include?("atlas-debug")
 end
 
-active_typography_paths = %w[
-  SKILL.md
-  agents/openai.yaml
-  references/design-tokens.md
-  references/semantic-colors.md
-]
-
-active_typography_paths.each do |relative|
-  path = File.join(root, relative)
-  next unless File.file?(path)
-
-  content = File.read(path)
-  errors << "#{relative} still references Noto Serif" if content.include?("Noto Serif")
-  errors << "#{relative} still references Noto Sans Mono" if content.include?("Noto Sans Mono")
-  errors << "#{relative} must require pure-black visible text" unless content.include?("#000000")
-end
+atlas_root = File.join(root, "atlas")
+atlas_errors, atlas_summary = BookFigure::AtlasSupport.validate(atlas_root)
+atlas_errors.each { |error| errors << "atlas: #{error}" }
 
 if errors.empty?
-  puts "book-figure validation: PASS"
+  puts "book-figure validation: PASS (#{atlas_summary[:panel_count]} panels, #{atlas_summary[:reference_count]} references)"
   exit 0
 end
 

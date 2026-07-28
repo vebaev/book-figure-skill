@@ -1,0 +1,39 @@
+version: 1
+cases:
+  - query:
+      - Dicer
+    expected:
+      object_ids:
+        - protein.dicer
+      match_types:
+        - exact
+
+  - query:
+      - AGO-containing RISC
+    expected:
+      object_ids:
+        - complex.mirisc
+      match_types:
+        - composite
+
+  - query:
+      - pre-miRNA
+    expected:
+      object_ids:
+        - rna.pre-mirna
+      match_types:
+        - exact
+
+  - query:
+      - chloroplast
+    expected:
+      object_ids:
+        - organelle.chloroplast
+      match_types:
+        - exact
+
+  - query:
+      - DNA helicase
+    expected:
+      match_types:
+        - fallback
