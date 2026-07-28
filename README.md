@@ -27,7 +27,7 @@ The source provides the panels, labels, entities, relationships, and reading ord
 ### Create a new figure from text
 
 ```text
-$book-figure create detailed style showing canonical animal miRNA biogenesis—miRNA gene → RNA polymerase II → pri-miRNA → Drosha → pre-miRNA inside a pore-containing double-membrane nucleus, followed by export through a nuclear pore → cytoplasmic Dicer → mature miRNA → a single AGO-containing RISC bound to target RNA
+$book-figure create canonical animal miRNA biogenesis—pri-miRNA → Drosha–DGCR8 → pore-exported pre-miRNA → Dicer → miRNA duplex → mature miRNA → one AGO-containing RISC bound to target mRNA → target mRNA degradation
 ```
 
 ![Book Figure example: canonical animal miRNA biogenesis](docs/images/miRNA-biogenesis.png)
