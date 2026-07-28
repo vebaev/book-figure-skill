@@ -1,4 +1,4 @@
-# Book Figure
+# Textbook Figure Codex Skill
 
 `book-figure` is a reusable Codex skill for redrawing or creating biology, molecular-biology, genomics, plant, viroid, RNA-silencing, chromatin, and regulatory schematics in one consistent editorial style.
 
