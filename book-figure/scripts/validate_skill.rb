@@ -39,9 +39,10 @@ end
 tokens_path = File.join(root, "references/design-tokens.md")
 if File.file?(tokens_path)
   tokens = File.read(tokens_path)
-  %w[1600 900 Noto\ Serif Noto\ Sans\ Mono 2.5 64 48 12].each do |token|
+  %w[1600 900 Inter Roboto\ Mono 2.5 64 48 12].each do |token|
     errors << "design tokens missing #{token}" unless tokens.include?(token.gsub("\\", ""))
   end
+  errors << "design tokens version must be 1.1.0" unless tokens.include?("Version: 1.1.0")
 end
 
 colors_path = File.join(root, "references/semantic-colors.md")
@@ -57,6 +58,10 @@ if File.file?(fixture_path)
   fixtures = YAML.safe_load(File.read(fixture_path))
   cases = fixtures.is_a?(Hash) ? fixtures["cases"] : nil
   errors << "contract fixtures require at least three cases" unless cases.is_a?(Array) && cases.length >= 3
+  mirna_case = cases&.find { |entry| entry["id"] == "mirna-processing" }
+  mirna_expected = mirna_case.is_a?(Hash) ? mirna_case["expected"] : nil
+  errors << "mirna contract must require Inter for ordinary text" unless mirna_expected&.fetch("default_text_font", nil) == "Inter"
+  errors << "mirna contract must require Roboto Mono for nucleotide sequences" unless mirna_expected&.fetch("nucleotide_sequence_font", nil) == "Roboto Mono"
 end
 
 asset_path = File.join(root, "assets/genereg-reference.png")
@@ -71,6 +76,23 @@ if File.file?(agent_path)
   agent = YAML.safe_load(File.read(agent_path))
   prompt = agent.dig("interface", "default_prompt").to_s
   errors << "default prompt must invoke $book-figure" unless prompt.include?("$book-figure")
+  errors << "default prompt must require Inter" unless prompt.include?("Inter")
+  errors << "default prompt must require Roboto Mono" unless prompt.include?("Roboto Mono")
+end
+
+active_typography_paths = %w[
+  SKILL.md
+  agents/openai.yaml
+  references/design-tokens.md
+]
+
+active_typography_paths.each do |relative|
+  path = File.join(root, relative)
+  next unless File.file?(path)
+
+  content = File.read(path)
+  errors << "#{relative} still references Noto Serif" if content.include?("Noto Serif")
+  errors << "#{relative} still references Noto Sans Mono" if content.include?("Noto Sans Mono")
 end
 
 if errors.empty?

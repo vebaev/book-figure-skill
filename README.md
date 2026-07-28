@@ -2,7 +2,7 @@
 
 `book-figure` is a reusable Codex skill for redrawing or creating biology, molecular-biology, genomics, plant, and regulatory schematics in one consistent minimalist editorial style.
 
-Current version: **1.1.0**
+Current version: **1.2.0**
 
 ## Install
 
@@ -48,8 +48,8 @@ Modes can be requested in plain language, for example: `use ref mode` or `withou
 
 ## Typography
 
-- Use **Noto Serif** for headings, labels, annotations, panel letters, and English or Bulgarian text.
-- Use **Noto Sans Mono** only for displayed nucleotide sequences and sequence-only motifs, including their nucleotide letters, hyphens, and 5′/3′ markers.
+- Use **Inter** for headings, labels, annotations, panel letters, and English or Bulgarian text.
+- Use **Roboto Mono** only for displayed nucleotide sequences and sequence-only motifs, including their nucleotide letters, hyphens, and 5′/3′ markers.
 
 ## Included asset
 

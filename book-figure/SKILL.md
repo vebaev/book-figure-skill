@@ -100,7 +100,7 @@ Mode: detailed. Retain the Book Figure minimalist 2D palette and rendering, but 
 
 - Apply the exact baseline, scaling, spacing, typography, stroke, arrow, radius, and highlight tokens in `references/design-tokens.md`.
 - Use a warm ivory paper field, airy modular panels, generous negative space, and the documented 8 px spacing grid.
-- Use Noto Serif for English and Bulgarian text and Noto Sans Mono only for displayed nucleotide sequences, exactly as defined in the token reference.
+- Use Inter for English and Bulgarian text and Roboto Mono only for displayed nucleotide sequences, exactly as defined in the token reference.
 - Avoid pure black, hard card fills, undersized labels, and ad hoc line weights.
 
 ### Palette
@@ -127,7 +127,7 @@ Input images: source = content/edit target (source-figure mode only); in ref mod
 Primary request: redraw [figure] while retaining [panels, entities, causal order], OR create [panel plan] from text.
 Text (verbatim): "[all source labels confirmed at readable resolution, or all labels supplied by the user]"
 Style/medium: follow the Book Figure minimalist 2D editorial visual grammar.
-Typography: Noto Serif for all visible English and Bulgarian text, including panel letters, headings, labels, RNA/DNA polarity marks, and annotations; use consistent weight and spacing across scripts. Use Noto Sans Mono only for nucleotide sequences and sequence-only motif strings, including their 5′/3′ end markers and hyphens.
+Typography: Inter for all visible English and Bulgarian text, including panel letters, headings, labels, RNA/DNA polarity marks, and annotations; use consistent weight and spacing across scripts. Use Roboto Mono only for nucleotide sequences and sequence-only motif strings, including their 5′/3′ end markers and hyphens.
 Design system: apply the exact current tokens from `references/design-tokens.md`, scaled proportionally from the 1600 × 900 px baseline.
 Semantic colors: list every depicted entity and its exact role-based fill/outline assignment from `references/semantic-colors.md`; keep repeated entities identical across panels.
 Constraints: preserve facts, labels, arrows, grouping, and reading order; create a new version.
@@ -139,7 +139,7 @@ Avoid: extra scientific claims, invented objects, neon, photorealism, watermark,
 Before handing off, confirm:
 
 - All labels, panel letters, and DNA/RNA polarity signs are legible and spelled correctly; every text string has been copied from a readable source or supplied verbatim by the user.
-- Every visible English and Bulgarian text element uses Noto Serif consistently, unless the user explicitly requested another typeface; nucleotide sequences and sequence-only motif strings use Noto Sans Mono, including their 5′/3′ end markers and hyphens.
+- Every visible English and Bulgarian text element uses Inter consistently, unless the user explicitly requested another typeface; nucleotide sequences and sequence-only motif strings use Roboto Mono, including their 5′/3′ end markers and hyphens.
 - Canvas, margins, gaps, line weights, arrowheads, radii, highlights, and type sizes follow `references/design-tokens.md` without ad hoc substitutions.
 - Every supplied relationship remains: arrows, loop direction, brackets, stage order, groups, and the requested reading order.
 - Colors follow `references/semantic-colors.md`; repeated entities keep the same fill and outline across panels, and state is not communicated by recoloring identity.
@@ -153,7 +153,7 @@ Before handing off, confirm:
 - Do not simplify away a source label, bracket, motif, cut marker, or panel merely to make the composition cleaner.
 - Do not add plausible-looking molecules or mechanisms to fill empty space.
 - Do not render long text in tiny type; rebalance the layout instead.
-- Do not mix sans-serif labels with Noto Serif headings, or substitute a Latin-only face for Bulgarian labels; use Noto Serif consistently for both scripts. The only default exception is Noto Sans Mono for the nucleotide characters and punctuation within a displayed sequence.
+- Do not mix unrelated typefaces or substitute a Latin-only face for Bulgarian labels; use Inter consistently for both English and Bulgarian text. The only default exception is Roboto Mono for the nucleotide characters and punctuation within a displayed sequence.
 - Do not rely on color alone for scientific meaning; pair it with labels, position, or shape.
 - Do not use `detailed` mode to turn every protein into a 3D render or every RNA into a decorative coil; retain only the structural features needed for the stated biology and keep the default minimalist 2D treatment.
 - Do not pass a user source to `image_gen` in `ref` mode, even as a content/edit target or secondary reference; this violates the facts-only contract.

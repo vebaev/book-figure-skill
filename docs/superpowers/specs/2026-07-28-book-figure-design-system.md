@@ -26,8 +26,8 @@ It does not add a vector renderer, object library, layout engine, or automated i
 ## Compatibility rules
 
 - Existing modes remain: default `genereg + detailed`, plus `ref`, `standard`, and `simplified`.
-- Noto Serif remains the default label family.
-- Noto Sans Mono remains limited to displayed nucleotide sequences.
+- Inter is the default family for labels and all ordinary English or Bulgarian text.
+- Roboto Mono is limited to displayed nucleotide sequences and sequence-only motifs.
 - The bundled full-resolution `assets/genereg-reference.png` remains mandatory.
 - Exact numerical tokens scale proportionally for non-baseline canvas sizes.
 

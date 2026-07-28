@@ -18,6 +18,8 @@ cases:
       mature_mirna: unspecified-rna
     expected:
       sequence_font_only_when_sequence_visible: true
+      default_text_font: Inter
+      nucleotide_sequence_font: Roboto Mono
       cleavage_marks_at_contact: true
 
   - id: viroid-replication

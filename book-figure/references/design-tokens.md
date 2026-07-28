@@ -1,6 +1,6 @@
 # Book Figure design tokens
 
-Version: 1.0.0
+Version: 1.1.0
 
 These values are authoritative. Apply them to every figure unless the user explicitly supplies different production dimensions or typography. For another canvas size, multiply all pixel values by `s = min(width / 1600, height / 900)`.
 
@@ -25,14 +25,14 @@ Use whitespace as the default panel separator. If a divider is scientifically or
 
 | Role | Typeface | Weight | Baseline size |
 | --- | --- | --- | --- |
-| Panel letter | Noto Serif | SemiBold 600 | 34 px |
-| Panel heading | Noto Serif | SemiBold 600 | 28 px |
-| Molecular label | Noto Serif | Medium 500 | 22 px |
-| Process/annotation | Noto Serif | Regular 400 | 18 px |
-| Polarity mark outside a sequence | Noto Serif | Regular 400 | 18 px |
-| Displayed nucleotide sequence | Noto Sans Mono | Medium 500 | 20 px |
+| Panel letter | Inter | SemiBold 600 | 34 px |
+| Panel heading | Inter | SemiBold 600 | 28 px |
+| Molecular label | Inter | Medium 500 | 22 px |
+| Process/annotation | Inter | Regular 400 | 18 px |
+| Polarity mark outside a sequence | Inter | Regular 400 | 18 px |
+| Displayed nucleotide sequence | Roboto Mono | Medium 500 | 20 px |
 
-Keep text horizontal unless a vertical genomic track makes rotation essential. Use sentence case. Never reduce visible text below 16 px at the baseline canvas; rebalance the layout instead.
+Use Inter for all visible English and Bulgarian text except displayed nucleotide sequences and sequence-only motifs, which use Roboto Mono. Keep text horizontal unless a vertical genomic track makes rotation essential. Use sentence case. Never reduce visible text below 16 px at the baseline canvas; rebalance the layout instead.
 
 ## Lines and contours
 
@@ -88,5 +88,5 @@ Use one restrained highlight at most per biological object. Do not use gradients
 Include the following line in every generation prompt:
 
 ```text
-Design system: Book Figure tokens v1.0.0. Baseline 1600 × 900 px; 64 px outer margin; 48 px panel gap; 2.5 px primary outlines; 3 px nucleic-acid strands; Noto Serif labels; Noto Sans Mono nucleotide sequences. Scale all pixel tokens proportionally for another requested canvas.
+Design system: Book Figure tokens v1.1.0. Baseline 1600 × 900 px; 64 px outer margin; 48 px panel gap; 2.5 px primary outlines; 3 px nucleic-acid strands; Inter labels; Roboto Mono nucleotide sequences. Scale all pixel tokens proportionally for another requested canvas.
 ```

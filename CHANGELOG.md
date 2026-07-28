@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0 — 2026-07-28
+
+- Changed the default figure typeface from Noto Serif to Inter for all ordinary English and Bulgarian text.
+- Changed the nucleotide-sequence typeface from Noto Sans Mono to Roboto Mono.
+- Bumped the design-token contract to v1.1.0.
+- Added validator and contract-fixture checks for the typography assignments.
+
 ## 1.1.0 — 2026-07-28
 
 - Added authoritative geometry, spacing, typography, arrow, and highlight tokens.
