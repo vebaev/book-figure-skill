@@ -101,3 +101,13 @@ ruby book-figure/scripts/validate_skill.rb
 ```
 
 When changing a design token or semantic role, update the relevant reference, bump `VERSION`, add a changelog entry, run the validator, and forward-test at least one contract case.
+
+## Author
+
+**Prof. Vesselin Petrov Baev**  
+Department of Molecular Biology, Faculty of Biology  
+Paisii Hilendarski University of Plovdiv, Bulgaria
+
+## License
+
+Distributed under the [MIT License](LICENSE).
