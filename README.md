@@ -27,7 +27,7 @@ The source provides the panels, labels, entities, relationships, and reading ord
 ### Create a new figure from text
 
 ```text
-$book-figure create a schematic of miRNA biogenesis: miRNA gene → pri-miRNA → Dicer → mature miRNA
+$book-figure create detailed style showing canonical animal miRNA biogenesis—miRNA gene → RNA polymerase II → pri-miRNA → Drosha → pre-miRNA inside a pore-containing double-membrane nucleus, followed by export through a nuclear pore → cytoplasmic Dicer → mature miRNA → a single AGO-containing RISC bound to target RNA
 ```
 
 Provide the intended entities, exact labels, relationships, and panel order. The skill builds the layout from the description.
