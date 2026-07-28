@@ -19,7 +19,7 @@ Then invoke it in a request with `$book-figure`.
 ### Redraw a supplied figure
 
 ```text
-$book-figure redraw this transcription-factor regulatory-DNA figure, preserving three transcription factors bound to three regulatory elements upstream of the promoter; retain the labels transcription factors, regulatory elements, Promoter, and DNA; render the genomic track as continuous double-stranded DNA using the visual atlas
+$book-figure redraw this figure, make the double strand dna as in the atlas
 ```
 
 Original source figure:
