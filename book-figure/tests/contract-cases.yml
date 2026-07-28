@@ -1,0 +1,39 @@
+version: 1
+cases:
+  - id: promoter-activation-inhibition
+    entities:
+      dna: dna
+      promoter: promoter
+      activator: activating-protein
+      inhibitor: inhibitory-protein
+      transcript: positive-rna
+    expected:
+      same_entity_same_color_across_panels: true
+      state_encoded_without_recoloring: true
+
+  - id: mirna-processing
+    entities:
+      precursor: unspecified-rna
+      dicer: neutral-enzyme
+      mature_mirna: unspecified-rna
+    expected:
+      sequence_font_only_when_sequence_visible: true
+      cleavage_marks_at_contact: true
+
+  - id: viroid-replication
+    entities:
+      positive_strand: positive-rna
+      negative_strand: negative-rna
+      ribozyme: sequence-motif
+    expected:
+      polarity_colors_stable: true
+      nucleotide_sequence_uses_monospace: true
+
+  - id: nucleus-chloroplast-comparison
+    entities:
+      nucleus: nucleus
+      chloroplast: chloroplast
+      dna: dna
+    expected:
+      compartment_boundaries_use_semantic_colors: true
+      dna_color_stable_across_compartments: true
