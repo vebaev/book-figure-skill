@@ -19,10 +19,16 @@ Then invoke it in a request with `$book-figure`.
 ### Redraw a supplied figure
 
 ```text
-$book-figure redraw this causal-SNP interpretation figure, preserving the Causal SNP, Target genes, Affected tissue, and Mechanisms rows, their uncertainty marks, and all directional relationships
+$book-figure redraw this transcription-factor regulatory-DNA figure, preserving three transcription factors bound to three regulatory elements upstream of the promoter; retain the labels transcription factors, regulatory elements, Promoter, and DNA; render the genomic track as continuous double-stranded DNA using the visual atlas
 ```
 
-![Book Figure example: causal SNP interpretation](docs/images/causal-snp-target-genes-mechanisms.png)
+Original source figure:
+
+![Original transcription-factor regulatory-DNA sketch](docs/images/transcription-factor-regulatory-elements-source.png)
+
+Book Figure redraw with Atlas double-stranded DNA:
+
+![Book Figure transcription-factor regulatory-DNA redraw](docs/images/transcription-factor-regulatory-elements-atlas-dna.png)
 
 The source provides the panels, labels, entities, relationships, and reading order. By default, the result uses the visual atlas plus `genereg + detailed` rendering.
 
