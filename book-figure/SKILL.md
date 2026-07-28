@@ -7,6 +7,15 @@ description: Use when redrawing a biology, molecular biology, genomics, plant, o
 
 Create a new, non-destructive editorial redraw or text-to-figure schematic. Preserve supplied facts and use the bundled minimalist reference as the defined visual grammar so unrelated figures look like one coherent book.
 
+## Required design-system references
+
+Before planning or generating any figure, read these files completely:
+
+1. `references/design-tokens.md` — authoritative canvas, spacing, typography, stroke, arrow, radius, highlight, and scaling values.
+2. `references/semantic-colors.md` — authoritative biological-role color assignments and state-encoding rules.
+
+Treat those references as the single source of truth. If a summary elsewhere in this skill conflicts with them, the reference files win. Include the required design-system and semantic-role prompt lines from both references in every generation prompt.
+
 ## Default style and input mode
 
 Use **`genereg` + `detailed` by default** for every request. The bundled `assets/genereg-reference.png` is therefore a style-only reference unless the user explicitly asks for **standard mode**, **without genereg**, or **without the bundled reference**. Apply detailed molecular conventions unless the user explicitly asks for **simplified**, **without detailed**, or a deliberately schematic-only figure.
@@ -81,32 +90,22 @@ Mode: detailed. Retain the Book Figure minimalist 2D palette and rendering, but 
 1. In source-figure mode, inspect the source with `view_image`. Extract every panel, label, arrow direction, grouping bracket, entity, and relationship. Transcribe all text verbatim; never paraphrase a source label. If any text is unreadable, ask for a higher-resolution source or the exact text—never infer it. In `ref` mode, extract only the science, labels, and relationships, then create a new panel plan without retaining the source's visual decisions. In text-to-figure mode, turn the supplied description into a concise panel plan and list its exact requested text.
 2. Use the built-in `image_gen` tool. In source-figure mode, treat the source as the **content/edit target**. In `ref` mode, generate from the extracted panel plan; the `image_gen` reference-image list must contain exactly one path: `assets/genereg-reference.png`. Put all source-derived material into the text prompt's `Scientific brief`, never into the image list. In text-to-figure mode, generate from the panel plan. By default, provide the bundled reference as a style-only reference and include the detailed-mode prompt line. If provided, use the user's detailed reference as a style-only reference, except in `ref` mode where no user source or reference may influence the design. Omit the bundled reference only in explicit standard mode; omit detailed conventions only in explicit simplified mode. Treat this specification and any prior approved book-figure examples as style references only.
 3. State in the prompt that the output must retain all supplied facts and requested text exactly; do not add mechanisms, molecules, panels, legends, or decorative claims.
-4. Generate a new PNG; never overwrite the source. Inspect the result for semantic order, label spelling, cropped features, arrow direction, and palette consistency. Iterate once if a defect affects meaning or legibility.
-5. Save the selected version as a sibling or in `outputs/`, then report its path and the built-in generation mode.
+4. Add a compact role-to-color map for every biological entity using `references/semantic-colors.md`. Repeated entities must keep identical assignments across panels.
+5. Generate a new PNG; never overwrite the source. Inspect the result for semantic order, label spelling, cropped features, arrow direction, palette consistency, and token compliance. Iterate once if a defect affects meaning or legibility.
+6. Save the selected version as a sibling or in `outputs/`, then report its path, built-in generation mode, and Book Figure version from `VERSION`.
 
 ## Editorial visual grammar
 
 ### Canvas, layout, and typography
 
-- Use a warm, almost-white ivory background (`#FCF7ED` to `#FFFDF8`), with no hard panel fills unless grouping requires one.
-- Make panels airy and modular. Use generous whitespace, a balanced grid, thin brackets, and clear left-to-right or clockwise reading flow. Prefer pale flat compartment fields and thin double boundaries over shaded information cards.
-- Use dark slate-blue ink (`#203B57`; secondary `#42586B`) for labels, arrows, brackets, and outlines. Avoid pure black.
-- Use **Noto Serif** for every visible text element by default: panel letters, headings, labels, polarity marks, and annotations. It must support both Latin and Cyrillic, so English and Bulgarian labels share the same family, weight, spacing, and baseline. **Exception:** render nucleotide sequences and sequence-only motif strings in **Noto Sans Mono**, including the nucleotide letters, hyphens, and 5′/3′ end markers that belong to that sequence. Keep their nearby explanatory labels in Noto Serif. Keep panel letters compact; use sentence case headings; keep labels short, high-contrast, and clear of objects. Use another typeface only when the user explicitly requests it.
-- Draw arrows as thin slate-blue (`#203B57`) for active connections or matte light gray (`#C7C9C8`) for neutral transitions. Use small rounded arrowheads and consistent stroke width.
+- Apply the exact baseline, scaling, spacing, typography, stroke, arrow, radius, and highlight tokens in `references/design-tokens.md`.
+- Use a warm ivory paper field, airy modular panels, generous negative space, and the documented 8 px spacing grid.
+- Use Noto Serif for English and Bulgarian text and Noto Sans Mono only for displayed nucleotide sequences, exactly as defined in the token reference.
+- Avoid pure black, hard card fills, undersized labels, and ad hoc line weights.
 
 ### Palette
 
-Use muted, harmonious pastel fills with a darker related outline and a single pale highlight. Do not use neon, glossy gradients, texture, 3D molecular surfaces, or unrelated rainbow colors.
-
-| Role | Fill | Outline / shadow |
-| --- | --- | --- |
-| Positive-sense RNA, DNA, beneficial plant/biological structures | `#79B86B` | `#397544` |
-| Negative-sense RNA, gene bodies, cool structural elements | `#5AAFD2` or `#4F7FB8` | `#224E87` |
-| Regulatory / activating protein | `#EE8C80` | `#A84D4D` |
-| Secondary protein or complex | `#C7B0E2` | `#7B62A8` |
-| Teal regulatory element | `#67B9B1` | `#32736E` |
-| Olive enhancer / neutral biological module | `#A8B95D` | `#627D38` |
-| Soft secondary highlight | `#E8DFC7` | `#B9AE91` |
+Use the role assignments and precedence rules in `references/semantic-colors.md`. DNA, RNA polarity, protein roles, regulatory modules, and compartments each have a stable fill/outline pair. Preserve entity colors across panels; encode state with connectors, inhibition bars, cleavage, fragmentation, saturation, or opacity. Do not use neon, glossy gradients, texture, 3D molecular surfaces, or unrelated rainbow colors.
 
 ### Biological-object treatment
 
@@ -129,6 +128,8 @@ Primary request: redraw [figure] while retaining [panels, entities, causal order
 Text (verbatim): "[all source labels confirmed at readable resolution, or all labels supplied by the user]"
 Style/medium: follow the Book Figure minimalist 2D editorial visual grammar.
 Typography: Noto Serif for all visible English and Bulgarian text, including panel letters, headings, labels, RNA/DNA polarity marks, and annotations; use consistent weight and spacing across scripts. Use Noto Sans Mono only for nucleotide sequences and sequence-only motif strings, including their 5′/3′ end markers and hyphens.
+Design system: apply the exact current tokens from `references/design-tokens.md`, scaled proportionally from the 1600 × 900 px baseline.
+Semantic colors: list every depicted entity and its exact role-based fill/outline assignment from `references/semantic-colors.md`; keep repeated entities identical across panels.
 Constraints: preserve facts, labels, arrows, grouping, and reading order; create a new version.
 Avoid: extra scientific claims, invented objects, neon, photorealism, watermark, logo.
 ```
@@ -139,8 +140,9 @@ Before handing off, confirm:
 
 - All labels, panel letters, and DNA/RNA polarity signs are legible and spelled correctly; every text string has been copied from a readable source or supplied verbatim by the user.
 - Every visible English and Bulgarian text element uses Noto Serif consistently, unless the user explicitly requested another typeface; nucleotide sequences and sequence-only motif strings use Noto Sans Mono, including their 5′/3′ end markers and hyphens.
+- Canvas, margins, gaps, line weights, arrowheads, radii, highlights, and type sizes follow `references/design-tokens.md` without ad hoc substitutions.
 - Every supplied relationship remains: arrows, loop direction, brackets, stage order, groups, and the requested reading order.
-- Colors follow semantic roles consistently across the entire figure.
+- Colors follow `references/semantic-colors.md`; repeated entities keep the same fill and outline across panels, and state is not communicated by recoloring identity.
 - Biological objects use clean minimalist 2D contours, flat pastel fills, thin slate outlines, and at most one subtle highlight; no 3D molecular texture or heavy shadow.
 - In `detailed` mode, nucleic-acid topology, protein interaction surfaces, gene-module order, and compartment boundaries use the requested precise schematic cues without invented molecular details.
 - In `ref` mode, the generated image was based only on the extracted scientific brief and the bundled Book Figure reference; the user source was not passed to generation and contributed no visual design.
