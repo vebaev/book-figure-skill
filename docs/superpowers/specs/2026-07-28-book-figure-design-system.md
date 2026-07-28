@@ -28,6 +28,7 @@ It does not add a vector renderer, object library, layout engine, or automated i
 - Existing modes remain: default `genereg + detailed`, plus `ref`, `standard`, and `simplified`.
 - Inter is the default family for labels and all ordinary English or Bulgarian text.
 - Roboto Mono is limited to displayed nucleotide sequences and sequence-only motifs.
+- Every visible text glyph is pure black `#000000`; slate blue `#203B57` remains reserved for outlines, arrows, and connectors.
 - The bundled full-resolution `assets/genereg-reference.png` remains mandatory.
 - Exact numerical tokens scale proportionally for non-baseline canvas sizes.
 

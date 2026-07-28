@@ -24,6 +24,7 @@ version_path = File.join(root, "VERSION")
 if File.file?(version_path)
   version = File.read(version_path).strip
   errors << "VERSION must use semantic versioning" unless version.match?(/\A\d+\.\d+\.\d+\z/)
+  errors << "package version must be 1.2.1" unless version == "1.2.1"
 end
 
 skill_path = File.join(root, "SKILL.md")
@@ -42,7 +43,8 @@ if File.file?(tokens_path)
   %w[1600 900 Inter Roboto\ Mono 2.5 64 48 12].each do |token|
     errors << "design tokens missing #{token}" unless tokens.include?(token.gsub("\\", ""))
   end
-  errors << "design tokens version must be 1.1.0" unless tokens.include?("Version: 1.1.0")
+  errors << "design tokens missing pure-black text color" unless tokens.include?("#000000")
+  errors << "design tokens version must be 1.2.0" unless tokens.include?("Version: 1.2.0")
 end
 
 colors_path = File.join(root, "references/semantic-colors.md")
@@ -51,6 +53,8 @@ if File.file?(colors_path)
   %w[#203B57 #5AAFD2 #79B86B #EE8C80 #C7B0E2 #E8DFC7].each do |hex|
     errors << "semantic colors missing #{hex}" unless colors.include?(hex)
   end
+  errors << "semantic colors missing pure-black text color" unless colors.include?("#000000")
+  errors << "semantic colors version must be 1.1.0" unless colors.include?("Version: 1.1.0")
 end
 
 fixture_path = File.join(root, "tests/contract-cases.yml")
@@ -62,6 +66,7 @@ if File.file?(fixture_path)
   mirna_expected = mirna_case.is_a?(Hash) ? mirna_case["expected"] : nil
   errors << "mirna contract must require Inter for ordinary text" unless mirna_expected&.fetch("default_text_font", nil) == "Inter"
   errors << "mirna contract must require Roboto Mono for nucleotide sequences" unless mirna_expected&.fetch("nucleotide_sequence_font", nil) == "Roboto Mono"
+  errors << "mirna contract must require pure-black visible text" unless mirna_expected&.fetch("visible_text_color", nil) == "#000000"
 end
 
 asset_path = File.join(root, "assets/genereg-reference.png")
@@ -78,12 +83,14 @@ if File.file?(agent_path)
   errors << "default prompt must invoke $book-figure" unless prompt.include?("$book-figure")
   errors << "default prompt must require Inter" unless prompt.include?("Inter")
   errors << "default prompt must require Roboto Mono" unless prompt.include?("Roboto Mono")
+  errors << "default prompt must require pure-black visible text" unless prompt.include?("#000000")
 end
 
 active_typography_paths = %w[
   SKILL.md
   agents/openai.yaml
   references/design-tokens.md
+  references/semantic-colors.md
 ]
 
 active_typography_paths.each do |relative|
@@ -93,6 +100,7 @@ active_typography_paths.each do |relative|
   content = File.read(path)
   errors << "#{relative} still references Noto Serif" if content.include?("Noto Serif")
   errors << "#{relative} still references Noto Sans Mono" if content.include?("Noto Sans Mono")
+  errors << "#{relative} must require pure-black visible text" unless content.include?("#000000")
 end
 
 if errors.empty?

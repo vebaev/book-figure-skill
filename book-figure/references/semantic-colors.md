@@ -1,6 +1,6 @@
 # Book Figure semantic colors
 
-Version: 1.0.0
+Version: 1.1.0
 
 Color expresses biological role consistently across the textbook. The same entity keeps the same fill and outline in every panel and figure. State changes are shown with arrows, inhibition bars, cleavage marks, opacity, or fragmentation—not by assigning a new unrelated color.
 
@@ -10,9 +10,12 @@ Color expresses biological role consistently across the textbook. The same entit
 | --- | --- | --- |
 | Paper background | `#FCF7ED` | — |
 | Alternate paper | `#FFFDF8` | — |
-| Primary ink | `#203B57` | — |
+| Visible text | `#000000` | — |
+| Primary outline and connector ink | `#203B57` | — |
 | Secondary ink | `#42586B` | — |
 | Neutral transition | `#C7C9C8` | — |
+
+All letters, numbers, symbols, and punctuation intended to be read as text use `#000000`, regardless of the color of the biological object beneath or beside them. This includes nucleotide sequences and their 5′/3′ markers. Reserve `#203B57` for non-text object outlines, arrows, connectors, and process marks.
 
 ## Nucleic acids
 
@@ -75,5 +78,5 @@ Color expresses biological role consistently across the textbook. The same entit
 Add a compact role map to every generation prompt:
 
 ```text
-Semantic colors: DNA #5AAFD2/#224E87; positive RNA #79B86B/#397544; negative RNA #4F7FB8/#224E87; activator #EE8C80/#A84D4D; inhibitor #C7B0E2/#7B62A8; neutral enzyme #E8DFC7/#B9AE91; promoter #F2D79B/#A8792D. Preserve entity colors across panels and encode state with arrows, inhibition bars, cleavage, fragmentation, or opacity.
+Semantic colors: all visible text #000000; DNA #5AAFD2/#224E87; positive RNA #79B86B/#397544; negative RNA #4F7FB8/#224E87; activator #EE8C80/#A84D4D; inhibitor #C7B0E2/#7B62A8; neutral enzyme #E8DFC7/#B9AE91; promoter #F2D79B/#A8792D. Preserve entity colors across panels and encode state with arrows, inhibition bars, cleavage, fragmentation, or opacity.
 ```
