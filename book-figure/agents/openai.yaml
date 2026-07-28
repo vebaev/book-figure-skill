@@ -1,0 +1,4 @@
+interface:
+  display_name: "Book Figure"
+  short_description: "Create minimalist scientific figures and ref redraws"
+  default_prompt: "Use $book-figure to create or redraw this scientific figure in the default minimalist genereg + detailed style. Use Noto Serif for labels and Noto Sans Mono only for displayed nucleotide sequences. Use ref mode when the supplied figure should provide scientific content only, not visual design."
