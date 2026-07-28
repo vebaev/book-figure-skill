@@ -1,6 +1,6 @@
 # Pure-black figure text design
 
-Date: 2026-07-28  
+Date: 2026-07-28
 Status: approved
 
 ## Contract
