@@ -2,6 +2,8 @@
 
 `book-figure` is a reusable Codex skill for redrawing or creating biology, molecular-biology, genomics, plant, and regulatory schematics in one consistent minimalist editorial style.
 
+Current version: **1.1.0**
+
 ## Install
 
 Copy the `book-figure` folder into your Codex skills directory:
@@ -50,3 +52,20 @@ Modes can be requested in plain language, for example: `use ref mode` or `withou
 ## Included asset
 
 `book-figure/assets/genereg-reference.png` is the bundled style-only reference. Keep it with the skill when copying, packaging, or installing it.
+
+## Design system and maintenance
+
+- `book-figure/references/design-tokens.md` defines the authoritative geometry and typography.
+- `book-figure/references/semantic-colors.md` defines stable biological-role color assignments.
+- `book-figure/tests/contract-cases.yml` contains representative consistency cases.
+- `book-figure/scripts/validate_skill.rb` checks package integrity without external dependencies.
+- `book-figure/VERSION` follows semantic versioning.
+- `CHANGELOG.md` records user-visible releases.
+
+Validate the package before publishing:
+
+```bash
+ruby book-figure/scripts/validate_skill.rb
+```
+
+When changing a design token or semantic role, update the relevant reference, bump `VERSION`, add a changelog entry, run the validator, and forward-test at least one contract case.
