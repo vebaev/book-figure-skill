@@ -52,9 +52,12 @@ test("capability cards include four decorative biological cutouts with glow styl
 
 test("landing page exposes refined actions and capability-card content", () => {
   assert.match(html, /archive\/refs\/heads\/main\.zip/);
-  assert.match(html, /Author CV[\s\S]*Download ZIP/);
+  assert.match(html, /Author CV[\s\S]*Download <span/);
+  assert.doesNotMatch(html, /Download ZIP/);
   assert.match(html, /Redraw and edit figures/);
   assert.match(html, /card-cutouts\/polycomb-repressive-complex\.png/);
   assert.match(css, /\.card-cutout \{[^}]*width: clamp\(6\.25rem, 9\.5vw, 7\.75rem\)/s);
+  assert.match(css, /\.card:nth-child\(1\) \.card-cutout \{[^}]*width: clamp\(7\.5rem, 11\.5vw, 9\.25rem\)/s);
+  assert.match(css, /\.card:hover \.card-cutout \{[^}]*scale\(1\.5\)/s);
   assert.match(css, /\.section \{ padding-block: clamp\(3\.5rem, 7vw, 6rem\); \}/);
 });
