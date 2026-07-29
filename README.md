@@ -111,7 +111,7 @@ https://vebaev.github.io/CV/
 
 ## Citation
 
-If you use Book Figure, please cite:
+If you use this code and skill, please cite:
 
 > Baev, V. (2026). *vebaev/book-figure-skill: Codex Skill for Molecular Biology Textbook Figures* (Version 1.3.0). Zenodo. https://doi.org/10.5281/zenodo.21669810
 
