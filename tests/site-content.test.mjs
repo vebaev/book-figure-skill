@@ -55,6 +55,6 @@ test("landing page exposes refined actions and capability-card content", () => {
   assert.match(html, /Author CV[\s\S]*Download ZIP/);
   assert.match(html, /Redraw and edit figures/);
   assert.match(html, /card-cutouts\/polycomb-repressive-complex\.png/);
-  assert.match(css, /\.card-cutout \{[^}]*width: clamp\(5rem, 8vw, 6\.5rem\)/s);
+  assert.match(css, /\.card-cutout \{[^}]*width: clamp\(6\.25rem, 9\.5vw, 7\.75rem\)/s);
   assert.match(css, /\.section \{ padding-block: clamp\(3\.5rem, 7vw, 6rem\); \}/);
 });
