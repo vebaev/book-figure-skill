@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.0 — 2026-07-29
+
+- Added two immutable user-provided visual-atlas panels for microbiology laboratory workflows and NGS/metagenomics workflows.
+- Indexed 50 new references: culture and handling equipment, microbial cells and envelopes, sequencing-library preparation, sequencing instruments, and analysis visual forms.
+- Added exact aliases and category fallbacks for microbiology, laboratory equipment, sequencing, and data-visualization requests.
+- Bumped the compatible atlas content version to 1.1.0.
+
 ## 1.3.0 — 2026-07-28
 
 - Added a visual biological-object atlas with five immutable reference panels and 136 indexed biological forms, complexes, processes, compartments, and plant structures.

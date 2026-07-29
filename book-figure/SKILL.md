@@ -1,6 +1,6 @@
 ---
 name: book-figure
-description: Use when redrawing or creating biology, molecular-biology, genomics, plant, viroid, RNA-silencing, chromatin, or regulatory schematics from an image or written scientific description, including requests for genereg, detailed, ref, or atlas-debug mode.
+description: Use when redrawing or creating biology, microbiology, molecular-biology, genomics, NGS, metagenomics, plant, viroid, RNA-silencing, chromatin, or regulatory schematics from an image or written scientific description, including requests for genereg, detailed, ref, or atlas-debug mode.
 ---
 
 # Book Figure

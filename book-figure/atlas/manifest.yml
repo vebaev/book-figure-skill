@@ -1,4 +1,4 @@
-atlas_version: 1.0.0
+atlas_version: 1.1.0
 schema_version: 1
 panels:
   - panel_id: atlas.mirna-silencing.001
@@ -70,3 +70,31 @@ panels:
     creation_note: Gemini-generated image supplied by the user
     authorization_note: User requested local storage inside book-figure
     date_added: '2026-07-28'
+
+  - panel_id: atlas.microbiology-lab.001
+    version: 1.0.0
+    status: active
+    file: ../assets/object-atlas/panels/panel-006-microbiology-lab.png
+    index: panels/panel-006.yml
+    original_filename: 38D3E844-B1E5-4F11-8BF0-F5F5AB8A05EA.PNG
+    sha256: 46309cbb7619afc41684ee1403d54f7ce5ea25daaeb8d72b3d22b62c7e7cf3a3
+    width: 1254
+    height: 1254
+    source_type: user-provided
+    creation_note: Microbiology laboratory-object atlas panel supplied by the user
+    authorization_note: User requested local storage inside book-figure
+    date_added: '2026-07-29'
+
+  - panel_id: atlas.ngs-metagenomics.001
+    version: 1.0.0
+    status: active
+    file: ../assets/object-atlas/panels/panel-007-ngs-metagenomics.png
+    index: panels/panel-007.yml
+    original_filename: E6B81FC2-73B3-4D47-8618-E1E6D33ED592.PNG
+    sha256: 88550273b85e032f352b647e5134e56f03e21d140dc0ca9a75daf007e72b9b4e
+    width: 1254
+    height: 1254
+    source_type: user-provided
+    creation_note: NGS and metagenomics-object atlas panel supplied by the user
+    authorization_note: User requested local storage inside book-figure
+    date_added: '2026-07-29'

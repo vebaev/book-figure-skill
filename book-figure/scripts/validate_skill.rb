@@ -19,6 +19,8 @@ required = %w[
   atlas/panels/panel-003.yml
   atlas/panels/panel-004.yml
   atlas/panels/panel-005.yml
+  atlas/panels/panel-006.yml
+  atlas/panels/panel-007.yml
   references/design-tokens.md
   references/object-atlas.md
   references/semantic-colors.md
@@ -46,7 +48,7 @@ version_path = File.join(root, "VERSION")
 if File.file?(version_path)
   version = File.read(version_path).strip
   errors << "VERSION must use semantic versioning" unless version.match?(/\A\d+\.\d+\.\d+\z/)
-  errors << "package version must be 1.3.0" unless version == "1.3.0"
+  errors << "package version must be 1.4.0" unless version == "1.4.0"
 end
 
 skill_path = File.join(root, "SKILL.md")

@@ -15,6 +15,10 @@ class AtlasRenderingTest < Minitest::Test
     SKILL_ROOT,
     "assets/object-atlas/panels/panel-001-mirna-silencing.png"
   )
+  RGB_PANEL = File.join(
+    SKILL_ROOT,
+    "assets/object-atlas/panels/panel-006-microbiology-lab.png"
+  )
 
   def test_png_reader_crops_rgba_without_external_dependencies
     image = BookFigure::PngImage.read(PANEL)
@@ -31,6 +35,13 @@ class AtlasRenderingTest < Minitest::Test
     end
   end
 
+  def test_png_reader_accepts_8_bit_rgb_panels_as_opaque_rgba
+    image = BookFigure::PngImage.read(RGB_PANEL)
+
+    assert_equal [1254, 1254], [image.width, image.height]
+    assert_equal 255, image.pixels.getbyte(3)
+  end
+
   def test_crop_builder_creates_one_caption_free_crop_per_reference
     Dir.mktmpdir("book-figure-crops") do |temporary|
       outputs = BookFigure::AtlasSupport.build_crops(
@@ -38,7 +49,7 @@ class AtlasRenderingTest < Minitest::Test
         output_dir: temporary
       )
 
-      assert_equal 136, outputs.length
+      assert_equal 186, outputs.length
       assert outputs.all? { |path| File.file?(path) }
       assert outputs.none? { |path| File.basename(path).include?("Bio-") }
     end

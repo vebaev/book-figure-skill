@@ -11,8 +11,8 @@ class SkillAtlasContractTest < Minitest::Test
     stdout, stderr, status = Open3.capture3("ruby", VALIDATOR)
 
     assert status.success?, stderr
-    assert_includes stdout, "5 panels"
-    assert_includes stdout, "136 references"
+    assert_includes stdout, "7 panels"
+    assert_includes stdout, "186 references"
     refute_includes stdout, "canonical objects"
   end
 end

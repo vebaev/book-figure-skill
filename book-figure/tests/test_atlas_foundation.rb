@@ -13,19 +13,19 @@ class AtlasFoundationTest < Minitest::Test
   MANIFEST = File.join(ATLAS_ROOT, "manifest.yml")
   VALIDATOR = File.join(SKILL_ROOT, "scripts", "validate_atlas.rb")
 
-  def test_manifest_registers_five_immutable_panels
+  def test_manifest_registers_seven_immutable_panels
     manifest = YAML.safe_load(File.read(MANIFEST))
 
-    assert_equal "1.0.0", manifest.fetch("atlas_version")
-    assert_equal 5, manifest.fetch("panels").length
+    assert_equal "1.1.0", manifest.fetch("atlas_version")
+    assert_equal 7, manifest.fetch("panels").length
   end
 
   def test_all_panels_match_declared_checksums_dimensions_and_object_contract
     errors, summary = BookFigure::AtlasSupport.validate(ATLAS_ROOT)
 
     assert_empty errors
-    assert_equal 5, summary.fetch(:panel_count)
-    assert_operator summary.fetch(:reference_count), :>=, 110
+    assert_equal 7, summary.fetch(:panel_count)
+    assert_operator summary.fetch(:reference_count), :>=, 180
   end
 
   def test_reference_ids_are_unique_while_printed_ids_may_repeat
@@ -48,7 +48,7 @@ class AtlasFoundationTest < Minitest::Test
     )
 
     assert status.success?, stderr
-    assert_match(/5 panels/, stdout)
+    assert_match(/7 panels/, stdout)
     assert_match(/\d+ references/, stdout)
   end
 end

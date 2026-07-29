@@ -22,7 +22,7 @@ module BookFigure
     CATEGORIES = %w[
       nucleic-acid protein complex virus chromatin gene-regulation membrane
       compartment organelle plant-structure plant-symptom transport process
-      symbol
+      symbol laboratory-equipment microorganism sequencing data-visualization
     ].freeze
 
     module_function
@@ -202,6 +202,10 @@ module BookFigure
       return "organelle" if normalized.match?(/chloroplast|mitochond|golgi|peroxisome/)
       return "compartment" if normalized.match?(/nucleus|cytoplasm|cytosol|vacuole/)
       return "membrane" if normalized.match?(/membrane|bilayer|tonoplast/)
+      return "microorganism" if normalized.match?(/microbe|bacter|yeast|fungal|fungus|biofilm|colony/)
+      return "laboratory-equipment" if normalized.match?(/petri|culture|tube|pipette|swab|loop|burner|plate|slant|flask|centrifuge|cryovial|autoclave|flow cell|sequencer/)
+      return "sequencing" if normalized.match?(/sequencing|ngs|library|adapter|amplicon|metagenom/)
+      return "data-visualization" if normalized.match?(/qc|quality|alignment|isoform|expression|pathway|profile|binning|growth curve/)
 
       "protein"
     end

@@ -1,13 +1,13 @@
 # Book Figure visual biological-object atlas
 
-Atlas version: 1.0.0
+Atlas version: 1.1.0
 
 The atlas gives ImageGen direct references for biological form, contact, palette, and rendering. It never supplies final layout, captions, identifiers, typography, or scientific authority.
 
 ## Assets
 
-- `atlas/manifest.yml` registers five immutable panels.
-- `atlas/panels/*.yml` indexes 136 visual references.
+- `atlas/manifest.yml` registers seven immutable panels.
+- `atlas/panels/*.yml` indexes 186 visual references, including microbiology laboratory, microbial-form, NGS, and metagenomics forms.
 - `assets/object-atlas/panels/` contains the unchanged originals.
 - `assets/object-atlas/crops/` contains rebuildable object-only references.
 - `scripts/atlas_debug.rb` explains selection without calling ImageGen.

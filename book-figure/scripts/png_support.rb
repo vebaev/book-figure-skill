@@ -43,12 +43,17 @@ module BookFigure
 
       raise ArgumentError, "#{path} missing IHDR" unless header
       width, height, bit_depth, color_type, compression, filter_method, interlace = header
-      unless bit_depth == 8 && color_type == 6 && compression.zero? &&
+      channels = { 2 => 3, 6 => 4 }.fetch(color_type, nil)
+      unless bit_depth == 8 && channels && compression.zero? &&
           filter_method.zero? && interlace.zero?
-        raise ArgumentError, "#{path} must be 8-bit RGBA non-interlaced PNG"
+        raise ArgumentError, "#{path} must be 8-bit RGB or RGBA non-interlaced PNG"
       end
 
-      new(width, height, decode_scanlines(Zlib::Inflate.inflate(compressed), width, height))
+      pixels = decode_scanlines(
+        Zlib::Inflate.inflate(compressed), width, height, channels
+      )
+      pixels = expand_rgb_to_rgba(pixels) if color_type == 2
+      new(width, height, pixels)
     end
 
     def self.blank(width:, height:, rgba:)
@@ -130,8 +135,8 @@ module BookFigure
     class << self
       private
 
-      def decode_scanlines(raw, width, height)
-        stride = width * 4
+      def decode_scanlines(raw, width, height, channels)
+        stride = width * channels
         expected = height * (stride + 1)
         raise ArgumentError, "inflated PNG data has unexpected size" unless raw.bytesize == expected
 
@@ -141,9 +146,15 @@ module BookFigure
           filter = raw.getbyte(row_offset)
           encoded = raw.byteslice(row_offset + 1, stride).bytes
           previous = row_index.zero? ? Array.new(stride, 0) : output[row_index - 1]
-          output[row_index] = unfilter(encoded, previous, filter, 4)
+          output[row_index] = unfilter(encoded, previous, filter, channels)
         end
         output.flatten.pack("C*")
+      end
+
+      def expand_rgb_to_rgba(rgb)
+        rgba = String.new(capacity: rgb.bytesize / 3 * 4, encoding: Encoding::BINARY)
+        rgb.bytes.each_slice(3) { |red, green, blue| rgba << red << green << blue << 255 }
+        rgba
       end
 
       def unfilter(encoded, previous, filter, bytes_per_pixel)

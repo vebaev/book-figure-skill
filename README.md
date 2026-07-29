@@ -4,9 +4,9 @@
 
 # Textbook Figure Codex Skill
 
-`book-figure` is a reusable Codex skill for redrawing or creating biology, molecular-biology, genomics, plant, viroid, RNA-silencing, chromatin, and regulatory schematics in one consistent editorial style.
+`book-figure` is a reusable Codex skill for redrawing or creating biology, microbiology, molecular-biology, genomics, NGS, metagenomics, plant, viroid, RNA-silencing, chromatin, and regulatory schematics in one consistent editorial style.
 
-Current version: **1.3.0**
+Current version: **1.4.0**
 
 ## Install
 
@@ -50,7 +50,7 @@ Provide the intended entities, exact labels, relationships, and panel order. The
 
 | Mode | When to use it | Result |
 | --- | --- | --- |
-| visual atlas | Default | Selects exact biological forms and complexes from five indexed reference panels and supplies an object-only montage to ImageGen. |
+| visual atlas | Default | Selects exact biological forms and complexes from seven indexed reference panels and supplies an object-only montage to ImageGen. |
 | `genereg` | Default | Uses the bundled global reference for warm ivory paper, editorial hierarchy, and layout language. |
 | `detailed` | Default | Adds scientifically precise 2D conventions for RNA/DNA, proteins, genes, motifs, modules, and compartments without 3D or cartoon rendering. |
 | `ref` | When the source must provide facts only | Extracts scientific content without passing the source to ImageGen; only the atlas montage and global reference are used. |
@@ -72,7 +72,7 @@ Modes can be requested in plain language, for example: `use ref mode` or `withou
 
 ## Visual biological-object atlas
 
-Version 1.3.0 adds five immutable indexed panels with 136 biological-form references. Stable semantic IDs and aliases replace the duplicated printed `Bio-###` identifiers. ImageGen receives only a bounded montage of relevant object crops, never the original panel grid or captions.
+Version 1.4.0 adds seven immutable indexed panels with 186 biological-form references. The two new panels cover microbiology laboratory tools, microbial forms and envelopes, NGS library preparation, sequencing instruments, and metagenomics analysis forms. Stable semantic IDs and aliases replace duplicated printed identifiers. ImageGen receives only a bounded montage of relevant object crops, never the original panel grid or captions.
 
 ```bash
 ruby book-figure/scripts/atlas_debug.rb \
@@ -113,7 +113,7 @@ https://vebaev.github.io/CV/
 
 If you use this code and skill, please cite:
 
-> Baev, V. (2026). *vebaev/book-figure-skill: Codex Skill for Molecular Biology Textbook Figures* (Version 1.3.0). Zenodo. https://doi.org/10.5281/zenodo.21669810
+> Baev, V. (2026). *vebaev/book-figure-skill: Codex Skill for Molecular Biology Textbook Figures* (Version 1.4.0). Zenodo. https://doi.org/10.5281/zenodo.21669810
 
 
 ## License
