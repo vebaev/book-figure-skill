@@ -115,7 +115,6 @@ If you use this code and skill, please cite:
 
 > Baev, V. (2026). *vebaev/book-figure-skill: Codex Skill for Molecular Biology Textbook Figures* (Version 1.3.0). Zenodo. https://doi.org/10.5281/zenodo.21669810
 
-Author ORCID: [0000-0002-5224-9145](https://orcid.org/0000-0002-5224-9145)
 
 ## License
 
