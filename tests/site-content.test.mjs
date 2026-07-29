@@ -36,3 +36,16 @@ test("site declares its GitHub Pages target and has no Jekyll processing", async
   assert.match(pagesReadme, /https:\/\/vebaev\.github\.io\/book-figure-skill\//);
   assert.match(pagesReadme, /main branch.*docs directory/is);
 });
+
+test("capability cards include four decorative biological cutouts with glow styling", () => {
+  for (const asset of [
+    "card-cutouts/dna-methyltransferase.png",
+    "card-cutouts/pre-mirna-dicer.png",
+    "card-cutouts/curled-leaf.png",
+    "card-cutouts/chloroplast.png",
+  ]) assert.match(html, new RegExp(asset.replace(".", "\\.")));
+  assert.equal((html.match(/<img class="card-cutout"[^>]*alt=""[^>]*aria-hidden="true">/g) ?? []).length, 4);
+  assert.match(css, /\.card-cutout/);
+  assert.match(css, /\.card:hover \.card-cutout/);
+  assert.match(css, /drop-shadow/);
+});
