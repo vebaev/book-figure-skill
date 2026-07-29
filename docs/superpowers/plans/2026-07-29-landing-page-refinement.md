@@ -10,7 +10,7 @@
 
 ## Global Constraints
 
-- Link the Download ZIP action to `https://github.com/vebaev/book-figure-skill/archive/refs/tags/v1.3.0.zip`.
+- Link the Download ZIP action to `https://github.com/vebaev/book-figure-skill/archive/refs/heads/main.zip`.
 - Place Download ZIP immediately after Author CV.
 - Use the heading `Redraw and edit figures`.
 - Use one shared CSS sizing rule for all capability-card illustrations; do not stretch them.
@@ -33,7 +33,7 @@
 Add a test named `landing page exposes refined actions and capability-card content` that asserts:
 
 ```js
-assert.match(html, /archive\/refs\/tags\/v1\.3\.0\.zip/);
+assert.match(html, /archive\/refs\/heads\/main\.zip/);
 assert.match(html, /Author CV[\s\S]*Download ZIP/);
 assert.match(html, /Redraw and edit figures/);
 assert.match(html, /card-cutouts\/polycomb-repressive-complex\.png/);
@@ -103,7 +103,7 @@ Open the PNG visually and confirm that all three labels remain legible at card s
 In `docs/index.html`, add directly after the Author CV link:
 
 ```html
-<a class="button button-secondary" href="https://github.com/vebaev/book-figure-skill/archive/refs/tags/v1.3.0.zip">Download ZIP <span aria-hidden="true">↓</span></a>
+<a class="button button-secondary" href="https://github.com/vebaev/book-figure-skill/archive/refs/heads/main.zip">Download ZIP <span aria-hidden="true">↓</span></a>
 ```
 
 Replace `Redraw figures` with `Redraw and edit figures`.
