@@ -7,6 +7,7 @@ const css = await readFile(new URL("../docs/assets/site.css", import.meta.url), 
 
 test("landing page exposes required calls to action and research metadata", () => {
   assert.match(html, /id="hero"/);
+  assert.match(html, /Create and redraw rigorous molecular-biology figures in a coherent, editorial textbook style with OpenAI Codex/);
   assert.match(html, /https:\/\/github\.com\/vebaev\/book-figure-skill/);
   assert.match(html, /https:\/\/vebaev\.github\.io\/CV\//);
   assert.match(html, /10\.5281\/zenodo\.21669810/);
