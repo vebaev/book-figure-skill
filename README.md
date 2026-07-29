@@ -20,7 +20,7 @@ Then invoke it in a request with `$book-figure`.
 
 ## Use
 
-### Redraw a supplied figure
+### Redraw and edit a supplied figure
 
 ```text
 $book-figure redraw this figure, make the double strand dna as in the atlas
