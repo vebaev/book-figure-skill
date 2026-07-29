@@ -58,7 +58,8 @@ h3 { font-size: 1.2rem; letter-spacing: -.025em; }
 .card { position: relative; min-height: 15rem; padding: 1.45rem 8.3rem 1.45rem 1.45rem; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: 0 .5rem 1.3rem rgba(32, 49, 64, .04); transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease; }
 .card:hover { border-color: rgba(45, 81, 111, .35); box-shadow: var(--shadow); transform: translateY(-.25rem); }
 .card-cutout { position: absolute; top: .75rem; right: .5rem; width: clamp(6.25rem, 9.5vw, 7.75rem); max-height: 7.75rem; object-fit: contain; pointer-events: none; filter: drop-shadow(0 .2rem .45rem rgba(45, 81, 111, .22)); opacity: .96; transition: transform .24s ease, filter .24s ease; }
-.card:hover .card-cutout { transform: translateY(-.2rem) scale(1.04); filter: drop-shadow(0 .3rem .75rem rgba(104, 176, 196, .45)); }
+.card:nth-child(1) .card-cutout { top: .35rem; right: .15rem; width: clamp(7.5rem, 11.5vw, 9.25rem); max-height: 9.25rem; }
+.card:hover .card-cutout { transform: translateY(-.2rem) scale(1.5); filter: drop-shadow(0 .3rem .75rem rgba(104, 176, 196, .45)); }
 .card-number { display: block; margin-bottom: 2.7rem; color: var(--accent-dark); font-size: .75rem; font-weight: 800; letter-spacing: .1em; }
 .card p { color: var(--muted); font-size: .95rem; }
 
