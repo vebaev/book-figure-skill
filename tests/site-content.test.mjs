@@ -15,6 +15,7 @@ test("landing page exposes required calls to action and research metadata", () =
 });
 
 test("landing page references the cover and three featured examples", () => {
+  assert.match(html, /assets\/favicon\.svg/);
   for (const asset of [
     "codex-skill-book-figure-hq.jpg",
     "transcription-factor-regulatory-elements-source.png",
