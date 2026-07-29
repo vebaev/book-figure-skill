@@ -42,10 +42,19 @@ test("capability cards include four decorative biological cutouts with glow styl
     "card-cutouts/dna-methyltransferase.png",
     "card-cutouts/pre-mirna-dicer.png",
     "card-cutouts/curled-leaf.png",
-    "card-cutouts/chloroplast.png",
+    "card-cutouts/polycomb-repressive-complex.png",
   ]) assert.match(html, new RegExp(asset.replace(".", "\\.")));
   assert.equal((html.match(/<img class="card-cutout"[^>]*alt=""[^>]*aria-hidden="true">/g) ?? []).length, 4);
   assert.match(css, /\.card-cutout/);
   assert.match(css, /\.card:hover \.card-cutout/);
   assert.match(css, /drop-shadow/);
+});
+
+test("landing page exposes refined actions and capability-card content", () => {
+  assert.match(html, /archive\/refs\/tags\/v1\.3\.0\.zip/);
+  assert.match(html, /Author CV[\s\S]*Download ZIP/);
+  assert.match(html, /Redraw and edit figures/);
+  assert.match(html, /card-cutouts\/polycomb-repressive-complex\.png/);
+  assert.match(css, /\.card-cutout \{[^}]*width: clamp\(5rem, 8vw, 6\.5rem\)/s);
+  assert.match(css, /\.section \{ padding-block: clamp\(3\.5rem, 7vw, 6rem\); \}/);
 });
