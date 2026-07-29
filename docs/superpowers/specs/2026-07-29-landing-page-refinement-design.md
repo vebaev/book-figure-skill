@@ -6,8 +6,8 @@ Refine the Book Figure landing page in `docs/` without changing its information 
 
 ## Changes
 
-- Add a **Download ZIP** action immediately after **Author CV**. It links to the immutable `v1.3.0` source archive:
-  `https://github.com/vebaev/book-figure-skill/archive/refs/tags/v1.3.0.zip`.
+- Add a **Download ZIP** action immediately after **Author CV**. It links to the current main-branch source archive:
+  `https://github.com/vebaev/book-figure-skill/archive/refs/heads/main.zip`.
 - Rename the first capability heading from **Redraw figures** to **Redraw and edit figures**.
 - Retain the DNA methyltransferase illustration for card 1. Replace card 4's chloroplast with a labeled Polycomb Repressive Complex illustration, using the labels PRC1, PRC2, and H3K27me3.
 - Scale all four decorative card illustrations through one shared CSS rule so that they have the same allocated visual footprint, aligned top-right and retaining the subtle hover glow. Any different aspect ratios are contained rather than stretched.
