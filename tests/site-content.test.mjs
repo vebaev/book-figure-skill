@@ -24,6 +24,11 @@ test("landing page references the cover and three featured examples", () => {
   ]) assert.match(html, new RegExp(asset.replace(".", "\\.")));
 });
 
+test("workflow shows both redraw and miRNA creation prompts", () => {
+  assert.equal((html.match(/<pre><code>\$book-figure/g) ?? []).length, 2);
+  assert.match(html, /\$book-figure create  miRNA biogenesis—pri-miRNA → Drosha–DGCR8 → pore-exported pre-miRNA → Dicer → miRNA duplex → mature miRNA →  AGO-containing RISC → target mRNA degradation/);
+});
+
 test("stylesheet provides responsive and reduced-motion rules", () => {
   assert.match(css, /@media \(max-width: 768px\)/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
