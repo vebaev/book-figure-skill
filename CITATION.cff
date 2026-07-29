@@ -1,0 +1,10 @@
+cff-version: 1.3.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: Baev
+  given-names: Vesselin
+doi: 10.5281/zenodo.21669810
+orcid: https://orcid.org/0000-0002-5224-9145
+title:vebaev/book-figure-skill: Codex Skill for Molecular Biology Textbook Figures
+version: 1.3.0
+date-released: 2026-07-29
