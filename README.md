@@ -118,6 +118,6 @@ If you use this code and skill, please cite:
 
 ## License
 
-Copyright © 2026 Vesselin Petrov Baev. This work is licensed under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/) (CC BY-NC-ND 4.0).
+This work is licensed under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/) (CC BY-NC-ND 4.0).
 
 You may copy and redistribute the skill with appropriate attribution for non-commercial purposes. You may not distribute modified or adapted versions. See [LICENSE](LICENSE) for details.
