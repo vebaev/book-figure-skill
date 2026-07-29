@@ -58,7 +58,7 @@ test("capability cards include four decorative biological cutouts with glow styl
 });
 
 test("landing page exposes refined actions and capability-card content", () => {
-  assert.match(html, /archive\/refs\/heads\/main\.zip/);
+  assert.match(html, /https:\/\/github\.com\/vebaev\/book-figure-skill\/releases/);
   assert.match(html, /Author CV[\s\S]*Download <span/);
   assert.doesNotMatch(html, /Download ZIP/);
   assert.match(html, /Redraw and edit figures/);
