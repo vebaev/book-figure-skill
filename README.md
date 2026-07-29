@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/codex-skill-book-figure.jpg" alt="Codex Skill book figure" width="400">
+  <img src="docs/images/codex-skill-book-figure.png" alt="Codex Skill book figure" width="400">
 </p>
 
 # Textbook Figure Codex Skill
